@@ -1,0 +1,18 @@
+#image-place-holder img:first-child {
+	position: absolute;
+	left: 0;
+	z-index: 10;
+}
+
+#image-place-holder img {
+  position:relative;
+  left:0;
+  -webkit-transition: opacity 1s ease-in-out;
+  -moz-transition: opacity 1s ease-in-out;
+  -o-transition: opacity 1s ease-in-out;
+  transition: opacity 1s ease-in-out;
+}
+
+#image-place-holder img.top:hover {
+  opacity:0;
+}
