@@ -3,6 +3,60 @@
 <head>
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+	
+
+	<link rel="stylesheet" type="text/css" media="screen" href="include/css/stylesheet.css">
+
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.min.js"></script>
+	<script type="text/javascript">
+var etx = {
+    init: function () {
+        etx.callFontFlakes();
+    },
+    callFontFlakes: function(){
+	    window.setInterval(function(){
+			etx.fontFlake();
+	    }, 500);
+    },
+    fontFlake: function(){
+
+    	var stageWidth = $(window).width();
+    	var stageHeight = $(window).height();
+    	
+		var pictures = new Array();
+		for(var x=1; x<21; x++ ) {
+		  pictures[x-1] = "samples/"+x+".jpg";
+		}
+
+    	var randomEntry = Math.floor(Math.random() * (pictures.length+1));
+
+		var position = Math.ceil(Math.random()*2190);
+    	
+		var flakeName = 'flake-'+randomEntry;
+		var grayScale = Math.ceil(Math.random()*256);
+		var hue = 'rgb('+grayScale+','+grayScale+','+grayScale+ ')';
+		
+
+		$('<img />', {
+
+			src: pictures[randomEntry],
+			width: 90,
+			height: 90,
+			id: flakeName, 
+		}).appendTo('body').addClass('photoball').css('left', position).css('color', hue).animate({
+			"top": "+=" + stageHeight,
+			opacity: 0
+		}, 5000, function() {
+			$('#'+flakeName).remove();			
+		}); 
+    }
+};
+$(document).ready(function () {
+    etx.init();
+});
+	</script>
+
+
 </head> 
 <body>
 <div class="container">
@@ -24,6 +78,7 @@
 	</div>
 </div>
 	<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+
 
 </body>
 </html>
