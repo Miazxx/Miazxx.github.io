@@ -18,19 +18,22 @@ var etx = {
 			etx.fontFlake();
 	    }, 500);
     },
+
+
     fontFlake: function(){
 
     	var stageWidth = $(window).width();
     	var stageHeight = $(window).height();
     	
 		var pictures = new Array();
-		for(var x=1; x<21; x++ ) {
-		  pictures[x-1] = "samples/"+x+".jpg";
+		for(var x=1; x<205; x++ ) {
+
+		  pictures[x-1] = "TWAUFACES/"+pad(x,3)+".jpg";
 		}
 
     	var randomEntry = Math.floor(Math.random() * (pictures.length+1));
 
-		var position = Math.ceil(Math.random()*2190);
+		var position = Math.ceil(Math.random()*1200);
     	
 		var flakeName = 'flake-'+randomEntry;
 		var grayScale = Math.ceil(Math.random()*256);
@@ -54,6 +57,13 @@ var etx = {
 $(document).ready(function () {
     etx.init();
 });
+
+function pad(num, size) {
+    var s = num+"";
+    while (s.length < size) s = "0" + s;
+    return s;
+}
+
 	</script>
 
 
