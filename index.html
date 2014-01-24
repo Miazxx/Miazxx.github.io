@@ -3,68 +3,67 @@
 <head>
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+	<script type="text/javascript" src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+	<script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 	
-
-	<link rel="stylesheet" type="text/css" media="screen" href="include/css/stylesheet.css">
-
-	<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.min.js"></script>
 	<script type="text/javascript">
-var etx = {
-    init: function () {
-        etx.callFontFlakes();
-    },
-    callFontFlakes: function(){
-	    window.setInterval(function(){
-			etx.fontFlake();
-	    }, 500);
-    },
+
+		$('#myModal').modal('show')
+
+		var etx = {
+		    init: function () {
+		        etx.callFontFlakes();
+		    },
+		    callFontFlakes: function(){
+			    window.setInterval(function(){
+					etx.fontFlake();
+			    }, 500);
+		    },
 
 
-    fontFlake: function(){
+		    fontFlake: function(){
 
-    	var stageWidth = $(window).width();
-    	var stageHeight = $(window).height();
-    	
-		var pictures = new Array();
-		for(var x=1; x<205; x++ ) {
+		    	var stageWidth = $(window).width();
+		    	var stageHeight = $(window).height();
+		    	
+				var pictures = new Array();
+				for(var x=1; x<205; x++ ) {
 
-		  pictures[x-1] = "TWAUFACES/"+pad(x,3)+".jpg";
-		}
+				  pictures[x-1] = "TWAUFACES/"+pad(x,3)+".jpg";
+				}
 
-    	var randomEntry = Math.floor(Math.random() * (pictures.length+1));
+		    	var randomEntry = Math.floor(Math.random() * (pictures.length+1));
 
-		var position = Math.ceil(Math.random()*1200);
-    	
-		var flakeName = 'flake-'+randomEntry;
-		var grayScale = Math.ceil(Math.random()*256);
-		var hue = 'rgb('+grayScale+','+grayScale+','+grayScale+ ')';
-		
+				var position = Math.ceil(Math.random()*1200);
+		    	
+				var flakeName = 'flake-'+randomEntry;
+				var grayScale = Math.ceil(Math.random()*256);
+				var hue = 'rgb('+grayScale+','+grayScale+','+grayScale+ ')';
+				
 
-		$('<img />', {
+				$('<img />', {
 
-			src: pictures[randomEntry],
-			width: 90,
-			height: 90,
-			id: flakeName, 
-		}).appendTo('body').addClass('photoball').css('left', position).css('color', hue).animate({
-			"top": "+=" + stageHeight,
-			opacity: 0
-		}, 5000, function() {
-			$('#'+flakeName).remove();			
-		}); 
-    }
-};
-$(document).ready(function () {
-    etx.init();
-});
+					src: pictures[randomEntry],
+					width: 90,
+					height: 90,
+					id: flakeName, 
+				}).appendTo('body').addClass('photoball').css('left', position).css('color', hue).animate({
+					"top": "+=" + stageHeight,
+					opacity: 0
+				}, 5000, function() {
+					$('#'+flakeName).remove();			
+				}); 
+		    }
+		};
+		$(document).ready(function () {
+		    etx.init();
+		});
 
-function pad(num, size) {
-    var s = num+"";
-    while (s.length < size) s = "0" + s;
-    return s;
-}
-
-	</script>
+		function pad(num, size) {
+		    var s = num+"";
+		    while (s.length < size) s = "0" + s;
+		    return s;
+		}</script>
 
 
 </head> 
@@ -81,6 +80,32 @@ function pad(num, size) {
 			<iframe src="https://docs.google.com/a/thoughtworks.com/forms/d/1j_HmDW4l4A9jQO8LI_cygW9eUa90ZKm_99BkKMqG_oo/viewform?embedded=true#start=embed" style="width: 100%" height="500" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
 
 			</div>
+
+
+
+<!-- Button trigger modal -->
+<button class="btn btn-primary btn-lg col-xs-3 col-xs-offset-4" data-toggle="modal" data-target="#myModal">
+  Launch demo modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">RSVP Form</h4>
+      </div>
+      <div class="modal-body">
+        
+			<iframe src="https://docs.google.com/a/thoughtworks.com/forms/d/1j_HmDW4l4A9jQO8LI_cygW9eUa90ZKm_99BkKMqG_oo/viewform?embedded=true#start=embed" style="width: 100%" height="500" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+
 		</div>
 	</div>
 </div>
