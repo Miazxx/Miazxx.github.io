@@ -62,10 +62,10 @@ function getRandomArbitary (min, max) {
 					height: 90,
 					id: flakeName, 
 				}).appendTo('body').addClass('photoball').css('left', position).css('color', hue).animate({
-					"top": "+=" + contentHeight,
-					 opacity: 0
-				}, 19000, function() {
-					 $('#'+flakeName).remove();			
+					"top": "+=" + stageHeight,
+					opacity: 0
+				}, 20000, function() {
+					$('#'+flakeName).remove();			
 				}); 
 		    }
 		};
