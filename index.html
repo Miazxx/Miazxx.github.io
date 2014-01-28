@@ -5,25 +5,40 @@
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
 	<script type="text/javascript" src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
 	<script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+
+
+
+	<script type="text/javascript" src="PhysicsJS-0.5.3-alpha/dist/physicsjs-full-0.5.3.min.js"></script>
 	
 	<script type="text/javascript">
 
 		$('#myModal').modal('show')
 
+
+function getRandomArbitary (min, max) {
+    return Math.random() * (max - min) + min;
+}
+
 		var etx = {
 		    init: function () {
-		        etx.callFontFlakes();
+		        etx.callPicFlakes();
 		    },
-		    callFontFlakes: function(){
+		    callPicFlakes: function(){
 			    window.setInterval(function(){
-					etx.fontFlake();
+					etx.picFlake();
 			    }, 500);
 		    },
 
 
-		    fontFlake: function(){
+		    picFlake: function(){
 
 		    	var stageWidth = $(window).width();
+				var contentWidth = $('.container').width();
+				var contentHeight = $('.container').height();
+
+				var initialLeftPosition = Math.round(Math.random()) * (contentWidth + 70);
+				
+
 		    	var stageHeight = $(window).height();
 		    	
 				var pictures = new Array();
@@ -34,7 +49,7 @@
 
 		    	var randomEntry = Math.floor(Math.random() * (pictures.length+1));
 
-				var position = Math.ceil(Math.random()*1200);
+				var position = Math.ceil(initialLeftPosition + getRandomArbitary(1, 150));
 		    	
 				var flakeName = 'flake-'+randomEntry;
 				var grayScale = Math.ceil(Math.random()*256);
@@ -42,21 +57,22 @@
 				
 
 				$('<img />', {
-
 					src: pictures[randomEntry],
 					width: 90,
 					height: 90,
 					id: flakeName, 
 				}).appendTo('body').addClass('photoball').css('left', position).css('color', hue).animate({
-					"top": "+=" + stageHeight,
-					opacity: 0
-				}, 5000, function() {
-					$('#'+flakeName).remove();			
+					"top": "+=" + contentHeight,
+					 opacity: 0
+				}, 19000, function() {
+					 $('#'+flakeName).remove();			
 				}); 
 		    }
 		};
 		$(document).ready(function () {
 		    etx.init();
+			
+
 		});
 
 		function pad(num, size) {
@@ -68,6 +84,7 @@
 
 </head> 
 <body>
+
 <div class="container">
 	<div class="row">
 		<div class="col-xs-10 col-xs-offset-1">

@@ -1,7 +1,7 @@
 #image-place-holder img:first-child {
-	position: absolute;
-	left: 0;
-	z-index: 10;
+  position: absolute;
+  left: 0;
+  z-index: 10;
 }
 
 #image-place-holder img {
@@ -27,11 +27,20 @@ body
     border-width: 100;
   
   -webkit-transform: translateZ(0); 
+  -webkit-filter: blur 5px;
   border-top-left-radius: 50%; 
   border-top-right-radius: 50%; 
   border-bottom-right-radius: 50%;
   border-bottom-left-radius: 50%;
   }
+
+  .photoball:hover
+{
+     border:2px solid #585858;
+    -webkit-filter: sepia(60%);
+    
+    filter: sepia (90%);
+}
 
 label{
   
