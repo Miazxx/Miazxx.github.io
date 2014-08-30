@@ -140,10 +140,21 @@
 					vagrant ssh client-app
 				</div>
 			</li>
-
+			 	Check if you have logstash-forwarder installed.
+			 	<div class="code">
+			 		<p>rpm -q logstash-forwarder</p>	
+			 	</div>
+			 	<p>
+			 	You'll be able to see logstash-forwarder-<i>version-number</i>. If it is installed, skip the next step. 
+			 	</p>
 			<li>
-				Download and install Logstash Forwarder package
+			</li>
+
+			
+			<li>
+				Download and install Logstash Forwarder package. 
 				<div class="code">
+					
 					<p>curl -O http://packages.elasticsearch.org/logstashforwarder/centos/logstash-forwarder-0.3.1-1.x86_64.rpm</p>
 					<p>sudo rpm -ivh ~/logstash-forwarder-0.3.1-1.x86_64.rpm</p>
 				</div>
