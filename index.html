@@ -5,326 +5,46 @@
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
 	<script type="text/javascript" src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
 	<script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
-
-<style>
-		.code, .output {
-			font-family: "Andale Mono", AndaleMono, monospace;
-			font-size: 14px;
-			padding: 20px;
-			margin: 20px 0;
-		}
-
-		.code {
-			background-color: #3f2a14;
-			color: #fbf8f4;
-		}
-
-		.output {
-			background-color: #009d00;
-			color: white;
-		}
-	</style>	
-
 </head> 
+
 <body>
 
 <div class="container">
 	<div class="row">
 		<div class="col-xs-10 col-xs-offset-1">
-			
-		 	<h1>Logstash + Elasticsearch + Kibana</h1>
-			<img src="http://blog.xebia.fr/wp-content/uploads/2013/12/file-logstash-es-kibana.png" alt="Logstash setup diagram.">
-			
-			<div>
-			<h2>Sections</h2>
-			<ul>
-				<li><a href="#part1">Part 1: Setup Logstash Server & Elasticsearch</a></li>
-				<li><a href="#part2">Part 2: Setup Logstash Forwarder</a></li>
-				<li><a href="#part3">Part 3: Setup Kibana</a></li>
-			</ul>
-			</div>
+			<div id="image-place-holder">
+				<img src="Balenciaga-Blog1.jpg" style="width:100%"/>
+            </div>
+			<div >
 
-			<div id="part1">
-			<h2>Part 1: Setup Logstash Server & Elasticsearch</h2>
-			<ol>
-			<li>
-				Spin up log-stash-server:
-				<div class="code">
-				vagrant up log-stash-server</br>
-				</br>
-				vagrant ssh log-stash-server</br>
-				</div>
-				<p>When you spin up log-stash-server vm, Logstash and Elasticsearch should have been installed via puppet.</p></br>
-
-			</li>
-
-			<li>
-				Generate SSL Certificates so that vm's can talk to each other.
-				Create a '/ssl' folder to store the created key and cert:
-				<div class="code">
-				<b>sudo</b> mkdir /opt/logstash/ssl/</br>
-				</br>
-				<b>sudo</b> openssl req -x509 -batch -nodes -days 3650 -newkey rsa:2048 -keyout /opt/logstash/ssl/logstash-forwarder.key -out /opt/logstash/ssl/logstash-forwarder.crt</br>
-				</div>
-			</li>
-
-			<li>
-				<p>Configure logstash config file, put it in /opt/logstash/</p>
+				<br/><br/>
+				You are invited to the ThoughtWorks Australia Team Hug 2015.
+				<br/>Below you will find important information about the date, transport and venue as well as a request to RSVP. Please read the information carefully and kindly submit your <b><u><i>THIS IS SOME RANDOM DATE NEEDS TO BE FIXED</i></u></b>. Detailed information will follow as it becomes available so please keep a close eye on your inbox.<br/>
 				
-				Copy the sample logstash server config file from /vagrant share folder
-				<div class="code">
-				<b>sudo</b> cp /vagrant/Logstash-Samples/configs/Logstash-Server-sample-config /opt/logstash/logstash-server.conf
-				</div>
+				<br/><br/>
 
-				Edit the config file:
-				<div class="code">
-				<b>sudo</b> vim /opt/logstash/logstash-server.conf
-				</div>
-				
-				<p>Change:
-				<ul>
-				<li>the port to some port number you want (we use 9876)</li>
-				<li>the ssl_certificate and ssl_key to point to the cert and private key we created earlier (/opt/logstash/ssl/logstash-forwarder.crt     and    /opt/logstash/ssl/logstash-forwarder.key)</li>
+				<label>Date</label>
+				<br/>Friday 14th March &#8764 Sunday 16th March 2014 <br/><br/>
+				<label>Venue</label>
+				<br/>Kooindah Waters Golf and Spa Resort, 40 Kooindah Boulevard, Wyong, NSW 2259 <br/>
+				Kooindah Waters is a fully integrated residential golf & spa resort, situated in the heart of the Central Coast, and only 90 minutes drive from Sydney CBD. An idyllic setting and extensive facilities provide the perfect atmosphere for our Team Hug. Recreational facilities include: 
+				<ul><li>
+				Gymnasium</li><li>
+				Golf course</li><li>
+				Sauna and spa</li><li>
+				Indoor heated lap pool</li><li>
+				Outdoor recreational pool</li><li>
+				Tennis courts</li>
 				</ul>
-				</p>
-
-				<p>Notes: If you want to avoid vim, you can edit the sample file first (find it at /Logstash-Samples/configs/Logstash-Server-sample-config), and copy it to vm after you make the changes.</p>
-			</li>	
-				
-			<li>	
-				For Logstash Forwarder to forward the log, it needs to have the ssl cert we generated earlier. Let's copy the cert to /vagrant share folder now:
-				<div class="code">
-				cp /opt/logstash/ssl/logstash-forwarder.crt /vagrant/
-				</div>
-			</li>
-
-			<li>
-				<h4>Start Elasticsearch</h4>
-				<div class="code">
-				<b>sudo</b> nohup /usr/share/elasticsearch/bin/elasticsearch &
-				</div>
-				(optional) if you want to check if ES is running: ps -ef | grep nohup
-			</li>
-
-			<li>
-				<h4>Start Logstash</h4>
-				<div class="code"> 
-				/opt/logstash/bin/logstash -f /opt/logstash/logstash-server.conf
-				</div>
-				You'll be able to see output like following: 
-				<div class="output">
-				"Using milestone 1 input plugin 'lumberjack'. This plugin should work, but would benefit from use by folks like you. Please let us know if you find bugs or have suggestions on how to improve this plugin.  For more information on plugin milestones, see http://logstash.net/docs/1.4.2-modified/plugin-milestones {:level=>:warn}
-				Using milestone 1 filter plugin 'syslog_pri'. This plugin should work, but would benefit from use by folks like you. Please let us know if you find bugs or have suggestions on how to improve this plugin.  For more information on plugin milestones, see http://logstash.net/docs/1.4.2-modified/plugin-milestones {:level=>:warn}."
-				</div>
-				But you will not see any logs, because no service is outputting to log-stash-server yet.
-			</li>	
-			</ol>
-			</div>
 
 
-
-
-<div id="part2">
-			<h2>Part 2: Setup Logstash Forwarder in client-app + web-service</h2>
-				<p>(repeat these steps on each of the machine you want to gather logs from)</p><br>
-				
-			<ol>
-			
-			<li>
-				Log in to application VM
-				<div class="code">
-					vagrant ssh web-service
-				</div>
-				or
-				<div class="code">
-					vagrant ssh client-app
-				</div>
-			</li>
-			<li>
-			 	Check if you have logstash-forwarder installed.
-			 	<div class="code">
-			 		<p>rpm -q logstash-forwarder</p>	
-			 	</div>
-			 	<p>
-			 	You'll be able to see logstash-forwarder-<i>version-number</i>. If it is installed, skip the next step. 
-			 	</p>
-			
-			</li>
-
-			
-			<li>
-				Download and install Logstash Forwarder package. 
-				<div class="code">
-					
-					<p>curl -O http://packages.elasticsearch.org/logstashforwarder/centos/logstash-forwarder-0.3.1-1.x86_64.rpm</p>
-					<p>sudo rpm -ivh ~/logstash-forwarder-0.3.1-1.x86_64.rpm</p>
-				</div>
-			</li>
-
-
-
-			<li>
-				Copy ssl cert from /vagrant share folder to some appropriate location
-				<div class="code">
-					<b>sudo</b> mkdir /opt/logstash-forwarder/ssl</br>
-					</br>
-					<b>sudo</b> cp /vagrant/logstash-forwarder.crt /opt/logstash-forwarder/ssl/
-				</div>
-			</li>
-
-
-
-			<li>
-				<p>Configure Forwarder config file</p>
-				Copy the sample logstash forwarder config file from /vagrant share folder
-				<div class="code">
-				<b>sudo</b> cp /vagrant/Logstash-Samples/configs/Logstash-Forwarder-sample-config /opt/logstash-forwarder/logstash-forwarder.conf
-				</div>
-				Edit the config file:
-				<div class="code">
-					<b>sudo</b> vim /opt/logstash-forwarder/logstash-forwarder.conf
-				</div>
-				<p>Copy the content from the sample forwarder.conf</p>
-
-				<p>Change:
-				<ul>
-				<li>the ip to <i>whoami</i>-log-stash-server.local OR your ip address*</li> 
-				<li>the port to the port number you are listening to in log-stash-server (we use 9876)</li>
-				<li>the ssl_ca to be the path that you have your cert (should be in /opt/logstash-forwarder/ssl/logstash-forwarder.crt)</li>
-				<li>Depending on where you want to collect the log from, in 'files', add 'paths' and 'fields' accordingly. We will add the app-log path ( eg. In web-service, log path is "/usr/bin/xconf-go-svc.log" ) and fields ( "type" => "service-log").</li>
-				</ul>
-				</p>
-
-			</li>
-			<li>
-				<h4>Start Forwarder</h4>
-				<div class="code">
-				<b>sudo</b> /opt/logstash-forwarder/bin/logstash-forwarder -config /opt/logstash-forwarder/logstash-forwarder.conf
-				</div>
-				You should be able to see output like the following:
-				<div class="output">
-				"2014/08/27 13:45:36 publisher init
-				2014/08/27 13:45:36 {
-				  "network": {
-				   ….blah blah blah your config file content...
-
-				2014/08/27 13:45:36.336504 Launching harvester on new file: /var/log/messages
-				2014/08/27 13:45:36.336516 Launching harvester on new file: /var/log/secure
-				2014/08/27 13:45:36.336535 Setting trusted CA from file: /opt/logstash-forwarder/ssl/logstash-forwarder.crt
-				2014/08/27 13:45:36.337117 Starting harvester: /var/log/messages
-				2014/08/27 13:45:36.337134 Current file offset: 99181
-				2014/08/27 13:45:36.337146 Starting harvester: /var/log/secure
-				2014/08/27 13:45:36.337151 Current file offset: 8123
-				2014/08/27 13:45:36.441414 Connecting to 192.168.67.120:9876 (peishi-log-stash-server.local)
-				2014/08/27 13:45:36.946418 Connected to 192.168.67.120 "
-				</div>
-			</li>
-
-			<li>
-				<p>Repeat steps on client-app VM.</p>
-			</li>
-			</ol>
-			</div>
-
-
-
-
-
-			<div>
-			<h2>Elasticsearch Results</h2>
-			<ul><li>
-				At this time, you should be able to see the Elasticsearch output by going to 
-				<div class="code">
-					http://<i>whoami</i>-log-stash-server.local:9200/_search?pretty=true&size=1000
-				</div>
-			</li></ul>
-			</div>
-
-
-
-
-
-			<div id="part3">
-			<h2>Part 3: Setup Kibana</h2>
-				<ol>
-				<li>
-					Login into log-stash-server vm <br>
-					<div class="code">
-						vagrant ssh log-stash-server
-					</div>
-
-				</li>
-				<li>
-					<p>Make Kibana talks to Elasticsearch</p>
-					Change kibana config to use your log stash server host, and port number to 80. The reason we change it 80 is because we're going to access kibana on port 80:
-					<div class="code">
-					<b>sudo</b> vim /opt/kibana/kibana-3.1.0/config.js
-					</div>
-
-					Search for elasticsearch: "http://"+window.location.hostname+":9200" and change the address to "http://<i>whoami</i>-log-stash-server.local:80" <br><br>
-					Copy the contents of the extracted directory to where the apache webserver is:
-					<div class="code">
-					<b>sudo</b> mkdir -p /var/www/kibana3 ; <br>
-					<b>sudo</b> cp -R /opt/kibana/kibana-3.1.0/* /var/www/kibana3
-					</div>
-					<p>Notes: mkdir '-p' option will create immediate directory that don't exist</p>
-				</li>
-
-				<li>
-					<p>Integrate Kibana to Apache</p>
-					Copy the sample kibana configuration file, and change VirtualHost name, ServerName and DocumentRoot
-					<div class="code">
-					<b>sudo</b> vim kibana3.conf
-					</div>
-					<p>Copy the content from Kinbana-sample-config</p>
-					Change
-					<ul>
-					<li>VirtualHost name to <i>whoami</i>-log-stash-server.local:80,</li>
-					<li>ServerName to <i>whoami</i>-log-stash-server.local and</li>
-					<li>DocumentRoot to where you copied your extracted kibana content to(/var/www/kibana3).</li>
-					</ul>
-					</br>
-				</li>
-
-				<li>
-					Copy the kibana config to apache configuration folder
-					<div class="code">
-					<b>sudo</b> mkdir -p /etc/httpd/conf.d/ ;<br>
-					 <b>sudo</b> cp kibana3.conf /etc/httpd/conf.d/ 
-					</div>
-				</li>
-
-				<li>
-					(Optional) It is possible to generate a login credentials that will be used by kibana. The htpasswd file created will be hooked up in the kibana3.conf configuration file
-					
-					<div class="code">
-					<b>sudo</b> htpasswd -c /etc/httpd/conf.d/kibana-htpasswd  <user>
-					password
-					password again
-					</div>
-				</li>
-
-				<li>
-					Start apache server
-					<div class="code">
-					<b>sudo</b> /sbin/service httpd start <br><br>
-				</div>
-
-				<h3>
-					<p>Find Kibana running at:</p>
-					<div class="code">
-						http://<i>whoami</i>-log-stash-server.local
-					</div>
-				</h3>
-				</li>
-				</ol>
-			</div>
-			
-
-
-
-
-
+				<br/>
+				<label>Transport</label>
+				<br/>
+				Flights for Sydney, Brisbane and Perth will be organised by the Team Hug Committee, so please do not book your own. Buses will also be arranged. Melbournians who wish to drive shall do so at their own expense. ThoughtWorks will not subsidise any costs incurred for driving as transport is being provided.
+				<br/>
+				If you change your mind after we have booked the flights we may ask you to contribute to the cost. We understand that circumstances are sometimes beyond your control and in these cases you will not be asked to contribute.
+				 <br/><br/>
 
 		</div>
 
@@ -332,6 +52,19 @@
 <!-- <button class="btn btn-primary btn-lg col-xs-4 col-xs-offset-4" data-toggle="modal" data-target="#myModal"> -->
   <!-- Next -->
 <!-- </button> -->
+
+				<label>RSVP</label>
+				<br/>Please answer the below questions in order to help us planning. <br/>
+				If your RSVP changes please let <b>Amy Fuga</b> or <b>Gemma Dodemond</b> know ASAP.<br/>
+
+				<h3><b><u>RSVP BY SOMEDATE --- INFO LISTED ARE INCORRECT ---CHECK ALL TEXTS BEFORE SEND OUT. </u></b></h3>
+			</div>
+<br/><br/>
+<!-- Button trigger modal -->
+<button class="btn btn-primary btn-lg col-xs-4 col-xs-offset-4" data-toggle="modal" data-target="#myModal">
+  I'm in _NEW GOOGLE FORM_
+</button>
+
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
