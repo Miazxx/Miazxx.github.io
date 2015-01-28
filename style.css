@@ -5,7 +5,7 @@
 }
 
 body {
-  background-color: rgb(181, 185, 53);
+  background-color: rgb(38, 189, 207);
 }
 
 h2 { 
@@ -15,7 +15,8 @@ h2 {
 }
 
 .hero {
-  background-color: rgb(181, 185, 53);
+  background-color: rgb(38, 189, 207);
+  /*background-color: rgb(181, 185, 53);*/
   border-top: 2px solid white;
   border-bottom: 2px solid white;
   color: white;  
