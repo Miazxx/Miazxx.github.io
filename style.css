@@ -48,6 +48,7 @@ h3 {
   h3 {
     color: white !important;
     font-size: 50px !important;
+    /*font-weight: bolder;*/
   }
 }
 
@@ -77,4 +78,10 @@ h3 {
   border-top: 2px solid white;
   margin: 0 auto;
   width: 12.5%;
+}
+
+.pure-button {
+  background: rgb(239,91,161);
+  color: white;
+  width: 30%;
 }
