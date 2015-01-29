@@ -1,36 +1,78 @@
-* {
+/** {
     font-family: 'Open Sans', sans-serif !important;
     font-size: 20px;
     color: white;
 }
+*/
+*, html, button, input, select, textarea,
+.pure-g [class *= "pure-u"] {
+  box-sizing: border-box;
+  font-family: 'Open Sans', sans-serif !important;
+}
+
+* {
+  font-size: 18px;
+}
 
 body {
-  background-color: rgb(38, 189, 207);
+  background-color: white;
 }
 
 h2 { 
-  text-align: center; 
-  font-weight: 700;
   color: rgb(106, 37, 105);
-  /*color: black*/
-}
-
-.hero {
-  background-color: rgb(38, 189, 207);
-  /*background-color: rgb(181, 185, 53);*/
-  border-top: 2px solid white;
-  border-bottom: 2px solid white;
-  color: white;  
-  font-weight: 900;
-  font-size: 100px;
-  /*font-style: italic;*/
-  margin: 30px 0;
-  text-align: center;
+  font-size: 48px;
+  font-weight: 100;
+  text-align: center; 
 }
 
 .blurb {
-  text-align: center;
-  padding-bottom: 30px;
   margin-bottom: 30px;
+  padding-bottom: 30px;
+  text-align: center;
+}
+
+.hero, h1 {
+  background-color: rgb(38, 189, 207);
+  color: white;  
+  font-weight: 900;
+  font-size: 100px;
+  font-style: italic;
+  padding: 50px;
+  text-align: center;
+}
+
+.tile {
+  color: white;
+  h3 {
+    color: white !important;
+    font-size: 50px !important;
+  }
+}
+
+.green-tile {
+  background-color: rgb(17,170,88) ;
+}
+.yellow-tile {
+  background-color: rgb(247,143,49);
+}
+.purple-tile {
+  background-color: rgb(177,28,84);
+}
+
+.title-block {
+  background-color: rgb(38, 189, 207);
+  margin-bottom: 50px;
+}
+
+.title-border_1 {
+  padding: 30px 0;
   border-bottom: 2px solid white;
+  margin: 0 auto;
+  width: 12.5%;
+}
+.title-border_2 {
+  padding: 30px 0;
+  border-top: 2px solid white;
+  margin: 0 auto;
+  width: 12.5%;
 }
