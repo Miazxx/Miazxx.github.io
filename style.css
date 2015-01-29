@@ -6,7 +6,7 @@
 }
 
 * {
-  font-size: 18px;
+  font-size: 20px;
   text-align: center;
 }
 
@@ -16,7 +16,7 @@ body {
 
 h2 { 
   color: rgb(106, 37, 105);
-  font-size: 48px;
+  font-size: 30px;
   font-weight: 100;
   text-align: center; 
 }
@@ -42,11 +42,13 @@ h2 {
   margin: 30px;
   padding: 30px;
   font-size: 20px !important;
-  h3 {
-    color: white !important;
-    font-size: 18px !important;
-  }
+}
 
+.tile-title {
+  color: white !important;
+  font-size: 30px !important;
+  text-transform: uppercase;
+  font-weight: 900;
 }
 
 .green-tile {
