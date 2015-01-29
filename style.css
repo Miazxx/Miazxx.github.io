@@ -25,6 +25,10 @@ h2 {
   text-align: center; 
 }
 
+h3 {
+  text-align: center;
+}
+
 .blurb {
   margin-bottom: 30px;
   padding-bottom: 30px;
@@ -36,7 +40,6 @@ h2 {
   color: white;  
   font-weight: 900;
   font-size: 100px;
-  font-style: italic;
   padding: 50px;
   text-align: center;
 }
